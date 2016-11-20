@@ -29,14 +29,15 @@ def okumura_model_path_loss(d, f, hb, hm, scenario):
         c_correct = 0
     elif scenario == 3:
         a_hm = 0
-        c_correct = 2 * math.log(f/28, 10) ** 2 + 5.4
+        c_correct = 2 * math.log(f/28.0, 10) ** 2 + 5.4
     elif scenario == 4:
         a_hm = 0
-        c_correct = 4.78 * math.log(f, 10) ** 2 + 18.33 * math.log(f, 10) + 40.98
+        c_correct = 4.78 * math.log(f, 10) ** 2 - 18.33 * math.log(f, 10) + 40.98
     else:
         print ("scenario setting is wrong should between 1 to 4")
         exit()
 
-    path = 69.55 + 21.16 * math.log(d, 10) - 13.82 * math.log(hb, 10) - a_hm + (44.9-6.55 * math.log(hb, 10))*math.log(d, 10) - c_correct
-
+    path_temp = 69.55 + 21.16 * math.log(f, 10) - 13.82 * math.log(hb, 10) + (44.9-6.55 * math.log(hb, 10))*math.log(d, 10)
+    add = - a_hm - c_correct
+    path = path_temp + add
     return path
