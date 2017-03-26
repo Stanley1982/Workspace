@@ -10,9 +10,9 @@ scenario = 3
 
 d_end = 200
 n = 200
-d = np.linspace(1.0, d_end, num= n)
+d = np.linspace(1.0, d_end, num=n)
 d_extender_position = 16.0
-d_extender = np.linspace(d_extender_position + 1.0, d_end, num= n)
+d_extender = np.linspace(d_extender_position + 1.0, d_end, num=n)
 
 plot_power = 33.0
 plot_power_extender = 23.0
@@ -25,8 +25,8 @@ for i in range(0, n):
     receive_power[i] = plot_power + gain - progagation_model.okumura_model_path_loss(d[i], f, hb, hm, scenario)
 
 for i in range(0, n):
-    receive_power[i] = plot_power_extender + gain - progagation_model.okumura_model_path_loss(d_extender[i]- d_extender_position, f, hb, hm, scenario)
-
+    receive_power[i] = plot_power_extender + gain \
+                       - progagation_model.okumura_model_path_loss(d_extender[i]- d_extender_position, f, hb, hm, scenario)
 
 x = d
 y = receive_power

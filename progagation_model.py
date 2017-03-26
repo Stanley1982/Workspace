@@ -38,6 +38,9 @@ def okumura_model_path_loss(d, f, hb, hm, scenario):
         exit()
 
     path_temp = 69.55 + 21.16 * math.log(f, 10) - 13.82 * math.log(hb, 10) + (44.9-6.55 * math.log(hb, 10))*math.log(d, 10)
+
     add = - a_hm - c_correct
+
     path = path_temp + add
+
     return path
